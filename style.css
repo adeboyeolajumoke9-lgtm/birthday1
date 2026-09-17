@@ -1,0 +1,574 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #080808;
+    --dark: #101010;
+    --gold: #c8a866;
+    --cream: #f5f1e8;
+    --muted: #969696;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: "DM Sans", sans-serif;
+}
+
+
+/* ================= SCREENS ================= */
+
+.screen {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 70px 8%;
+
+    background:
+        radial-gradient(
+            circle at 70% 30%,
+            rgba(200, 168, 102, 0.08),
+            transparent 30%
+        ),
+        var(--black);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateX(40px) scale(0.98);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.7s cubic-bezier(.22,.61,.36,1),
+        visibility 0.7s;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0) scale(1);
+}
+
+
+/* ================= CONTENT ================= */
+
+.screen-content {
+    width: min(1100px, 100%);
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    text-align: center;
+}
+
+
+/* ================= TYPOGRAPHY ================= */
+
+.eyebrow {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+h1,
+h2 {
+    font-family: "Playfair Display", serif;
+}
+
+h1 {
+    font-size: clamp(60px, 10vw, 145px);
+    line-height: 0.83;
+    letter-spacing: -5px;
+}
+
+h1 span,
+h2 span {
+    color: var(--gold);
+}
+
+.name {
+    margin-top: 35px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.small-text {
+    color: var(--muted);
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+
+/* ================= BUTTON ================= */
+
+.main-btn {
+    margin-top: 40px;
+
+    padding: 15px 24px;
+
+    border: 1px solid rgba(200, 168, 102, 0.5);
+    border-radius: 50px;
+
+    background: transparent;
+    color: var(--cream);
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.main-btn span {
+    margin-left: 12px;
+    color: var(--gold);
+}
+
+.main-btn:hover {
+    background: var(--gold);
+    color: #080808;
+    transform: translateY(-3px);
+}
+
+.main-btn:hover span {
+    color: #080808;
+}
+
+.gold-btn {
+    background: var(--gold);
+    color: #080808;
+}
+
+.gold-btn:hover {
+    background: var(--cream);
+}
+
+
+/* ================= PAGE COUNTER ================= */
+
+.page-counter {
+    position: fixed;
+    top: 30px;
+    right: 7%;
+
+    z-index: 100;
+
+    font-size: 11px;
+    letter-spacing: 2px;
+
+    color: var(--muted);
+}
+
+#currentPage {
+    color: var(--gold);
+}
+
+
+/* ================= FOOTBALL MARK ================= */
+
+.football-mark {
+    position: absolute;
+    right: 8%;
+    bottom: 10%;
+
+    font-size: 90px;
+    opacity: 0.08;
+
+    animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+}
+
+
+/* ================= TWO COLUMN ================= */
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.text-side h2 {
+    font-size: clamp(45px, 6vw, 80px);
+    line-height: 0.95;
+    margin-bottom: 30px;
+}
+
+.text-side p {
+    max-width: 500px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.image-card {
+    height: 550px;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    filter: grayscale(20%);
+    transition: transform 0.8s ease;
+}
+
+.image-card:hover img {
+    transform: scale(1.04);
+}
+
+
+/* ================= AGE ================= */
+
+.age-screen {
+    text-align: center;
+}
+
+.giant-number {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(150px, 30vw, 400px);
+    line-height: 0.75;
+
+    color: transparent;
+    -webkit-text-stroke: 1px var(--gold);
+
+    opacity: 0.8;
+}
+
+.age-screen h2 {
+    font-size: clamp(30px, 4vw, 55px);
+    margin-top: 20px;
+}
+
+.age-screen p {
+    max-width: 600px;
+    margin: 25px auto 0;
+
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+
+/* ================= FOOTBALL ================= */
+
+.football-screen {
+    text-align: center;
+}
+
+.football-icon {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+.football-screen h2 {
+    font-size: clamp(50px, 7vw, 95px);
+    line-height: 0.95;
+}
+
+.football-screen > p {
+    max-width: 600px;
+    margin: 30px auto;
+
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.football-card {
+    max-width: 650px;
+    margin: 40px auto 0;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.football-card div {
+    padding: 20px;
+
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.football-card div:last-child {
+    border-right: none;
+}
+
+.football-card strong {
+    display: block;
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.football-card span {
+    display: block;
+    margin-top: 7px;
+
+    font-size: 13px;
+    color: var(--muted);
+}
+
+
+/* ================= MESSAGE ================= */
+
+.message-screen {
+    display: grid;
+
+    grid-template-columns: 0.75fr 1fr;
+    gap: 70px;
+
+    align-items: center;
+}
+
+.message-image {
+    height: 480px;
+    overflow: hidden;
+}
+
+.message-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.message {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(20px, 2vw, 28px);
+    line-height: 1.5;
+}
+
+.message p {
+    margin-bottom: 20px;
+}
+
+
+/* ================= FINAL ================= */
+
+.final-screen {
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(200,168,102,0.13),
+            transparent 45%
+        ),
+        var(--black);
+}
+
+.final-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.final-ball {
+    font-size: 65px;
+    margin-bottom: 20px;
+}
+
+.final-content h2 {
+    font-size: clamp(70px, 11vw, 150px);
+    line-height: 0.8;
+}
+
+.final-name {
+    margin-top: 35px;
+    font-weight: 600;
+}
+
+.final-text {
+    max-width: 600px;
+
+    margin-top: 20px;
+
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.signature {
+    margin-top: 45px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.signature span,
+.signature small {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.signature strong {
+    color: var(--gold);
+    font-size: 20px;
+}
+
+.signature a {
+    margin-top: 12px;
+
+    color: var(--cream);
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.signature a:hover {
+    color: var(--gold);
+}
+
+
+/* ================= BACK BUTTON ================= */
+
+.back-btn {
+    position: fixed;
+
+    left: 7%;
+    bottom: 35px;
+
+    z-index: 100;
+
+    border: none;
+    background: transparent;
+
+    color: var(--muted);
+
+    font-family: inherit;
+    font-size: 12px;
+
+    cursor: pointer;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: 0.3s;
+}
+
+.back-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.back-btn:hover {
+    color: var(--gold);
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+    .screen {
+        padding: 60px 7%;
+        overflow-y: auto;
+    }
+
+    .page-counter {
+        top: 22px;
+        right: 7%;
+    }
+
+    h1 {
+        font-size: clamp(55px, 18vw, 90px);
+        letter-spacing: -3px;
+    }
+
+    .name {
+        font-size: 15px;
+    }
+
+    .two-column,
+    .message-screen {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .image-card {
+        height: 300px;
+        order: -1;
+    }
+
+    .text-side h2 {
+        font-size: 50px;
+    }
+
+    .giant-number {
+        font-size: 190px;
+    }
+
+    .football-screen h2 {
+        font-size: 55px;
+    }
+
+    .football-card {
+        grid-template-columns: 1fr;
+    }
+
+    .football-card div {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .football-card div:last-child {
+        border-bottom: none;
+    }
+
+    .message-image {
+        height: 280px;
+    }
+
+    .message {
+        font-size: 20px;
+    }
+
+    .final-content h2 {
+        font-size: 80px;
+    }
+
+    .football-mark {
+        font-size: 55px;
+    }
+
+    .back-btn {
+        bottom: 20px;
+    }
+}
